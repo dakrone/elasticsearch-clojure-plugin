@@ -1,6 +1,8 @@
 # elasticsearch-clojure
 
-An Elasticsearch plugin, written entirely in Clojure
+An Elasticsearch plugin, written entirely in Clojure.
+
+Heavily a work in progress.
 
 ## Usage
 
