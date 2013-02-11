@@ -8,6 +8,8 @@
                  [org.elasticsearch/elasticsearch "0.20.4"]]
   :aot [esclojure.ClojureHandler
         esclojure.ClojureModule
+        esclojure.action.ClojureFibonacciRequest
+        esclojure.action.ClojureFibonacciResponse
         esclojure.action.TransportClojureFibonacciAction
         esclojure.rest.action.RestClojureFibonacciAction
         esclojure.ClojurePlugin]
