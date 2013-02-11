@@ -1,7 +1,9 @@
 (ns esclojure.rest.action.RestClojureFibonacciAction
   (:require [clojure.tools.logging :as log]
             [esclojure.fibonacci :as fib])
-  (:import (org.elasticsearch.rest RestStatus RestRequest$Method)
+  (:import (esclojure.action ClojureFibonacciRequest)
+           (org.elasticsearch.action ActionListener)
+           (org.elasticsearch.rest RestStatus RestRequest$Method)
            (org.elasticsearch.rest.action.support RestXContentBuilder)
            (org.elasticsearch.rest XContentRestResponse))
   (:gen-class :extends org.elasticsearch.rest.BaseRestHandler
@@ -26,11 +28,16 @@
   (.registerHandler controller RestRequest$Method/GET "/_fibonacci" this))
 
 (defn -handleRequest [this request channel]
-  (let [builder (RestXContentBuilder/restContentBuilder request)
-        state (.state this)]
+  ;; For some reason, these log methods don't actually work
+  (log/info "handleRequest!")
+  (let [state (.state this)
+        _ (log/info "state:" state)
+        fib-request (:fib-action state)
+        builder (RestXContentBuilder/restContentBuilder request)]
+    (log/info "req:" fib-request)
     (.startObject builder)
     (.field builder "fibonacci" (fib/fibonacci (.param request "num")))
-    (.field builder "state" (str @state))
     (.endObject builder)
-    (.sendResponse channel (XContentRestResponse. request
-                                                  RestStatus/OK builder))))
+    (.sendResponse channel
+                   (XContentRestResponse. request
+                                          RestStatus/OK builder))))

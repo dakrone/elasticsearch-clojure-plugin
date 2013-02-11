@@ -1,7 +1,6 @@
 (ns esclojure.action.ClojureFibonacciRequest
+  (:require [esclojure.fibonacci :as fib])
   (:gen-class
-   :extends org.elasticsearch.action.support.master.MasterNodeOperationRequest
-   :contructors {[String] []}))
+   :extends org.elasticsearch.action.support.nodes.NodesOperationRequest
+   :contructors {[] []}))
 
-(defn -validate [this]
-  nil)
