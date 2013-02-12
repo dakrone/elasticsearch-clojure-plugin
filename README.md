@@ -4,6 +4,17 @@ An Elasticsearch plugin, written entirely in Clojure.
 
 Heavily a work in progress.
 
+This work came about due to this Clojure ticket:
+[CLJ-948](http://dev.clojure.org/jira/browse/CLJ-948) being resolved.
+It's mostly an experiment to see if building an Elasticsearch plugin
+is possible without Java shims.
+
+It works right now, but getting the `TransportClojureFibonacciAction`
+working is having difficulty due to Clojure not allowing a gen-class
+to extend a class using generics.
+
+If you have any suggestions or comments, feel free to open an issue.
+
 ## Usage
 
 ```
