@@ -17,6 +17,8 @@ If you have any suggestions or comments, feel free to open an issue.
 
 ## Usage
 
+(Requires [leiningen](http://leiningen.org) version 2.x)
+
 ```
 $ lein es
 ```
